@@ -13,7 +13,6 @@ pipeline {
                 sh '''
                     python3 -m venv venv
                     source venv/bin/activate
-
                     pip install --upgrade pip
                     pip install -r requirements.txt
                 '''
@@ -52,11 +51,11 @@ pipeline {
                 sh '''
                     echo "Restarting Gunicorn..."
 
-                    systemctl restart "$SERVICE_NAME"
+                    sudo systemctl restart "$SERVICE_NAME"
 
                     sleep 3
 
-                    systemctl status "$SERVICE_NAME" --no-pager
+                    sudo systemctl status "$SERVICE_NAME" --no-pager
                 '''
             }
         }
