@@ -3,12 +3,6 @@ pipeline {
 
     stages {
 
-        stage('Checkout') {
-            steps {
-                git 'https://github.com/nexqor/python-jenkins-demo.git'
-            }
-        }
-
         stage('Create Virtual Environment') {
             steps {
                 sh '''
@@ -43,14 +37,6 @@ pipeline {
                 '''
             }
         }
-
-        stage('Deploy') {
-            steps {
-                sh '''
-                    echo "Python application deployment completed"
-                '''
-            }
-        }
     }
 
     post {
@@ -63,3 +49,7 @@ pipeline {
         }
     }
 }
+
+
+
+
