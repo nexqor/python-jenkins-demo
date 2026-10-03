@@ -1,6 +1,11 @@
 pipeline {
     agent any
 
+    environment {
+        DEPLOY_DIR = '/opt/python-jenkins-demo'
+        SERVICE_NAME = 'python-jenkins-demo'
+    }
+
     stages {
 
         stage('Setup Python') {
@@ -8,6 +13,7 @@ pipeline {
                 sh '''
                     python3 -m venv venv
                     source venv/bin/activate
+
                     pip install --upgrade pip
                     pip install -r requirements.txt
                 '''
@@ -23,18 +29,34 @@ pipeline {
             }
         }
 
-        stage('Build') {
+        stage('Deploy') {
             steps {
                 sh '''
-                    echo "Python application build completed"
+                    echo "Deploying application..."
+
+                    mkdir -p "$DEPLOY_DIR/templates"
+                    mkdir -p "$DEPLOY_DIR/static"
+
+                    cp app.py "$DEPLOY_DIR/"
+                    cp requirements.txt "$DEPLOY_DIR/"
+                    cp templates/index.html "$DEPLOY_DIR/templates/"
+                    cp static/style.css "$DEPLOY_DIR/static/"
+
+                    echo "Application files deployed."
                 '''
             }
         }
 
-        stage('Deploy') {
+        stage('Restart Application') {
             steps {
                 sh '''
-                    echo "Python application deployment started"
+                    echo "Restarting Gunicorn..."
+
+                    systemctl restart "$SERVICE_NAME"
+
+                    sleep 3
+
+                    systemctl status "$SERVICE_NAME" --no-pager
                 '''
             }
         }
@@ -42,7 +64,12 @@ pipeline {
         stage('Health Check') {
             steps {
                 sh '''
-                    echo "Health check will run after deployment"
+                    echo "Checking application health..."
+
+                    curl -f http://localhost:8000/health
+
+                    echo ""
+                    echo "Application is healthy!"
                 '''
             }
         }
