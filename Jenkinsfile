@@ -33,6 +33,7 @@ pipeline {
                 sh '''
                     echo "Deploying application..."
 
+                    mkdir -p "$DEPLOY_DIR"
                     mkdir -p "$DEPLOY_DIR/templates"
                     mkdir -p "$DEPLOY_DIR/static"
 
@@ -41,7 +42,7 @@ pipeline {
                     cp templates/index.html "$DEPLOY_DIR/templates/"
                     cp static/style.css "$DEPLOY_DIR/static/"
 
-                    echo "Application files deployed."
+                    echo "Application files deployed successfully."
                 '''
             }
         }
@@ -51,11 +52,11 @@ pipeline {
                 sh '''
                     echo "Restarting Gunicorn..."
 
-                    sudo systemctl restart "$SERVICE_NAME"
+                    sudo -n /usr/bin/systemctl restart "$SERVICE_NAME"
 
                     sleep 3
 
-                    sudo systemctl status "$SERVICE_NAME" --no-pager
+                    sudo -n /usr/bin/systemctl status "$SERVICE_NAME" --no-pager
                 '''
             }
         }
