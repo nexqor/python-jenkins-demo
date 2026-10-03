@@ -3,17 +3,10 @@ pipeline {
 
     stages {
 
-        stage('Create Virtual Environment') {
+        stage('Setup Python') {
             steps {
                 sh '''
                     python3 -m venv venv
-                '''
-            }
-        }
-
-        stage('Install Dependencies') {
-            steps {
-                sh '''
                     source venv/bin/activate
                     pip install --upgrade pip
                     pip install -r requirements.txt
@@ -37,6 +30,22 @@ pipeline {
                 '''
             }
         }
+
+        stage('Deploy') {
+            steps {
+                sh '''
+                    echo "Python application deployment started"
+                '''
+            }
+        }
+
+        stage('Health Check') {
+            steps {
+                sh '''
+                    echo "Health check will run after deployment"
+                '''
+            }
+        }
     }
 
     post {
@@ -44,7 +53,8 @@ pipeline {
             echo 'Python CI/CD pipeline completed successfully!'
         }
 
-
-
-
-
+        failure {
+            echo 'Python CI/CD pipeline failed!'
+        }
+    }
+}
