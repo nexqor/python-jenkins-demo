@@ -44,11 +44,6 @@ pipeline {
             echo 'Python CI/CD pipeline completed successfully!'
         }
 
-        failure {
-            echo 'Python CI/CD pipeline failed!'
-        }
-    }
-}
 
 
 
