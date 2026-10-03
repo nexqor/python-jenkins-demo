@@ -7,7 +7,7 @@ def test_home():
     response = client.get("/")
 
     assert response.status_code == 200
-    assert response.data == b"Python application deployed using Jenkins!"
+    assert b"Python Application" in response.data
 
 
 def test_health():

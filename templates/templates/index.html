@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Python Jenkins Demo</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<header class="navbar">
+    <div class="container nav-content">
+        <div class="logo">NEXQOR<span>.</span></div>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#stack">Tech Stack</a>
+            <a href="#pipeline">CI/CD</a>
+        </nav>
+    </div>
+</header>
+
+
+<main>
+
+<section id="home" class="hero">
+    <div class="container hero-content">
+
+        <div class="hero-text">
+
+            <div class="badge">
+                ● Jenkins Deployment
+            </div>
+
+            <h1>
+                Python Application
+                <span>CI/CD Pipeline</span>
+            </h1>
+
+            <p>
+                A Flask application automatically tested and deployed
+                through Jenkins using a modern DevOps workflow.
+            </p>
+
+            <div class="buttons">
+                <a href="#pipeline" class="btn primary">
+                    View Pipeline
+                </a>
+
+                <a href="/health" class="btn secondary">
+                    Health Check
+                </a>
+            </div>
+
+        </div>
+
+        <div class="terminal">
+
+            <div class="terminal-header">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <div class="terminal-body">
+                <p><span>$</span> git push origin main</p>
+                <p>→ GitHub</p>
+                <p>→ Jenkins</p>
+                <p>→ pytest</p>
+                <p>→ Build</p>
+                <p>→ Deploy</p>
+                <p class="success">✓ Deployment successful</p>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+<section id="about" class="section">
+
+    <div class="container">
+
+        <div class="section-heading">
+            <p class="eyebrow">ABOUT PROJECT</p>
+
+            <h2>
+                Built for automated deployment
+            </h2>
+
+            <p>
+                This project demonstrates a complete Python CI/CD workflow
+                using GitHub and Jenkins.
+            </p>
+        </div>
+
+        <div class="cards">
+
+            <div class="card">
+                <div class="icon">01</div>
+                <h3>Version Control</h3>
+                <p>
+                    Source code is maintained in GitHub and changes
+                    trigger the development workflow.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="icon">02</div>
+                <h3>Continuous Integration</h3>
+                <p>
+                    Jenkins creates the Python environment, installs
+                    dependencies and runs automated tests.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="icon">03</div>
+                <h3>Deployment</h3>
+                <p>
+                    Successful builds can automatically deploy the
+                    application using Gunicorn.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section id="stack" class="section dark-section">
+
+    <div class="container">
+
+        <div class="section-heading">
+            <p class="eyebrow">TECHNOLOGY</p>
+
+            <h2>Technology Stack</h2>
+
+            <p>
+                Technologies used to build and automate this application.
+            </p>
+        </div>
+
+        <div class="tech-grid">
+
+            <div class="tech">
+                <strong>Python</strong>
+                <span>Application Runtime</span>
+            </div>
+
+            <div class="tech">
+                <strong>Flask</strong>
+                <span>Web Framework</span>
+            </div>
+
+            <div class="tech">
+                <strong>Git</strong>
+                <span>Version Control</span>
+            </div>
+
+            <div class="tech">
+                <strong>GitHub</strong>
+                <span>Source Repository</span>
+            </div>
+
+            <div class="tech">
+                <strong>Jenkins</strong>
+                <span>CI/CD Automation</span>
+            </div>
+
+            <div class="tech">
+                <strong>Gunicorn</strong>
+                <span>Application Server</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section id="pipeline" class="section">
+
+    <div class="container">
+
+        <div class="section-heading">
+            <p class="eyebrow">AUTOMATION</p>
+
+            <h2>CI/CD Pipeline</h2>
+
+            <p>
+                Every code change can move through the following workflow.
+            </p>
+        </div>
+
+        <div class="pipeline">
+
+            <div class="pipeline-step">
+                <span>01</span>
+                <h3>Git Push</h3>
+                <p>Developer pushes code to GitHub.</p>
+            </div>
+
+            <div class="arrow">→</div>
+
+            <div class="pipeline-step">
+                <span>02</span>
+                <h3>Jenkins</h3>
+                <p>Jenkins retrieves the latest source code.</p>
+            </div>
+
+            <div class="arrow">→</div>
+
+            <div class="pipeline-step">
+                <span>03</span>
+                <h3>Test</h3>
+                <p>Pytest validates the application.</p>
+            </div>
+
+            <div class="arrow">→</div>
+
+            <div class="pipeline-step">
+                <span>04</span>
+                <h3>Deploy</h3>
+                <p>Application is deployed and served.</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="status-section">
+
+    <div class="container">
+
+        <div class="status-card">
+
+            <div>
+                <p class="eyebrow">APPLICATION STATUS</p>
+
+                <h2>Python Application</h2>
+
+                <p>
+                    Flask application is ready for automated deployment.
+                </p>
+            </div>
+
+            <div class="status">
+                <span class="status-dot"></span>
+                Healthy
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<footer>
+
+    <div class="container footer-content">
+
+        <div>
+            <strong>NEXQOR.</strong>
+            <p>Python CI/CD Demo</p>
+        </div>
+
+        <p>
+            Built with Python, Flask & Jenkins
+        </p>
+
+    </div>
+
+</footer>
+
+</body>
+</html>
